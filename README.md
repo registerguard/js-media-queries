@@ -11,7 +11,7 @@ CSS and Javascript to talk media queries with the CSS `:after` pseudo-property](
 
 ---
 
-**UPDATE 2:** The code now looks at `font-family` first, then falls back to `:after`.
+**UPDATE 2:** The code now looks at `:after` first (this makes Opera happy) and then falls back to `font-family`. View the CHANGELOG for a list of browsers this code has been tested in.
 
 ---
 
@@ -26,6 +26,8 @@ Define a set of html `font-family` and/or `:after` strings in your stylesheet th
 
 ```css
 html { font-family: "small"; }
+
+body { font-family: Arial, sans-serif; } /* Override <html> inheritance. */
 
 body:after {
 	content: "small";
@@ -77,6 +79,12 @@ var queries = [
 		callback : function() { console.log('xlarge'); }
 	}
 ];
+```
+
+Fire off the code:
+
+```javascript
+window.onload = function() { MQ.init(queries); };
 ```
 
 ### 3. Adding queries

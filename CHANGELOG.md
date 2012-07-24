@@ -31,9 +31,10 @@
 * Fixed [this syntax/logic error](https://github.com/JoshBarr/js-media-queries/blob/247ce8caf42b23eb11bc98bd7b086b3f00f4f22b/js/onmediaquery.js#L151): `elem.attachEven`
 * Probably the biggest change to the JS was adding the ability to look at `font-family` **and** `:after`:
     * Opera has issues with `font-family` so `:after` is checked first.
-        * **Note:** As of this version, Opera will use `font-family` if `:after` is not set; unfortunately, Opera returns the "default" `font-family` (i.e. `Times New Roman`), so our script will fail.
+        * **Note:** As of this version, Opera will use `font-family` if `:after` is not set; unfortunately, Opera returns the "default" `font-family` (i.e. `Times New Roman`), so our script will fail silently in this browser.
 * Converted code block spaces to tabs… I love using spaces for Python, but I use tabs for everything else. :)
-* Created new gh-pages branch for the sake of previewing demo page content.
+* Created new `gh-pages` branch for the sake of previewing demo page content.
+* Created new `develop` branch for my crazy commits.
 
 ##### Browser tests:
 
@@ -52,3 +53,5 @@
     * Safari 4.3 (simulated), Safari 5.1.1
 
 ---
+
+Version number and changes prior to this fork are (currently) not documented.

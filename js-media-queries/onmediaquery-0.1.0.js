@@ -6,7 +6,7 @@
  * @license   Released under the MIT license.
  *            http://www.opensource.org/licenses/mit-license.php
  * @version   0.1.0
- * @date      Sun 22 July, 2012
+ * @date      Sun 23 July, 2012
  */
 
 var MQ = (function(mq) {
@@ -37,9 +37,9 @@ var MQ = (function(mq) {
 			
 		}
 		
-		this._addEvent(window, 'resize', this._listenForChange, mq); // Add a listener to the window.resize event, pass mq/self as the scope.
+		_addEvent(window, 'resize', _listenForChange, mq); // Add a listener to the window.resize event, pass mq/self as the scope.
 		
-		this._listenForChange(); // Figure out which query is active on load.
+		_listenForChange.call(this); // Figure out which query is active on load.
 		
 	};
 	
@@ -72,7 +72,7 @@ var MQ = (function(mq) {
 			if (typeof query.call_for_each_context !== 'boolean') query.call_for_each_context = true; // Default
 			
 			// Fire the added callback if it matches the current context:
-			if ((this.context) && this._inArray(this.context, query.context)) query.callback();
+			if ((this.context) && _inArray(this.context, query.context)) query.callback();
 			
 			return this.callbacks[this.callbacks.length - 1];
 			
@@ -108,12 +108,14 @@ var MQ = (function(mq) {
 	
 	/**
 	 * Binds to the window.onResize and checks for media query changes.
+	 *
+	 * @this { object } Current instance.
 	 */
 	
-	mq._listenForChange = function() {
+	function _listenForChange() {
 		
 		// Get the value of :after or font-family from the chosen element style:
-		var context = this._contentAfter(document.body) || this._fontFamily(document.documentElement); // Returns the first value that is "truth-like", or the last value, if no values are "truth-like".
+		var context = _contentAfter(document.body) || _fontFamily(document.documentElement); // Returns the first value that is "truth-like", or the last value, if no values are "truth-like".
 		
 		// Do we have a context? Note that Opera doesn't jive with font-family on the <html> element...
 		if (context) {
@@ -124,7 +126,7 @@ var MQ = (function(mq) {
 				
 				this.new_context = context;
 				
-				this._triggerCallbacks(this.new_context);
+				_triggerCallbacks.call(this, this.new_context);
 				
 			}
 			
@@ -139,10 +141,11 @@ var MQ = (function(mq) {
 	/**
 	 * Loop through the stored callbacks and execute the ones that are bound to the current context.
 	 *
+	 * @this { object } Current instance.
 	 * @param context { string }
 	 */
 	
-	mq._triggerCallbacks = function(context) {
+	function _triggerCallbacks(context) {
 		
 		if (context) {
 			
@@ -151,11 +154,11 @@ var MQ = (function(mq) {
 			for (var i = 0, l = this.callbacks.length; i < l; i++) {
 				
 				// Don't call for each context?
-				if ((this.callbacks[i].call_for_each_context === false) && this._inArray(this.context, this.callbacks[i].context)) continue; // Was previously called, and we don't want to call it for each context.
+				if ((this.callbacks[i].call_for_each_context === false) && _inArray(this.context, this.callbacks[i].context)) continue; // Was previously called, and we don't want to call it for each context.
 				
 				callback_function = this.callbacks[i].callback;
 				
-				if (this._inArray(context, this.callbacks[i].context) && (callback_function !== undefined)) callback_function(); // Callback!
+				if (_inArray(context, this.callbacks[i].context) && (callback_function !== undefined)) callback_function(); // Callback!
 				
 			}
 			
@@ -174,7 +177,7 @@ var MQ = (function(mq) {
 	 * @param eventContext { object }
 	 */
 	
-	mq._addEvent = function(elem, type, eventHandle, eventContext) {
+	function _addEvent(elem, type, eventHandle, eventContext) {
 		
 		if (elem) {
 			
@@ -209,7 +212,7 @@ var MQ = (function(mq) {
 	 * @return { boolan } True if the needle occurs, false otherwise.
 	 */
 	
-	mq._inArray = function(needle, haystack) {
+	function _inArray(needle, haystack) {
 		
 		for (var i = 0, l = haystack.length; i < l; i++) {
 			
@@ -229,7 +232,7 @@ var MQ = (function(mq) {
 	 * @return { string } Value or empty string.
 	 */
 	
-	mq._fontFamily = function(el) {
+	function _fontFamily(el) {
 		
 		if (el) {
 			
@@ -248,7 +251,7 @@ var MQ = (function(mq) {
 	 * @return { string } Value or empty string.
 	 */
 	
-	mq._contentAfter = function(el) {
+	function _contentAfter(el) {
 		
 		if (el) {
 			
@@ -260,6 +263,6 @@ var MQ = (function(mq) {
 	
 	//--------------------------------------------------------------------
 	
-	return mq; // Expose the methods.
+	return mq; // Expose the API.
 
 }(MQ || {}));
