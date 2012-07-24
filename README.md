@@ -1,157 +1,120 @@
-Javascript onMediaQuery
-===============================
+# Javascript *onMediaQuery*
 
-A neat way to trigger JS when media queries change.
+**Trigger JS when media queries change.**
 
-Jeremy Keith recently posted a fantastic way of getting
-CSS and Javascript to talk media queries with the CSS :after pseudo-property.
+[Jeremy Keith](http://adactio.com/) recently [posted a fantastic way of getting
+CSS and Javascript to talk media queries with the CSS `:after` pseudo-property](http://adactio.com/journal/5429/).
 
-UPDATE: It turns out that Android JS support for CSS :after is pretty patchy.
-We've decided to set the font-family property on the HTML element instead, as
-it's better supported (despite being a bit of a hack).
+---
 
-This has a number of advantages over using window.matchMedia(), namely that
-you only have to maintain your breakpoints in one place, and it fails more
-gracefully.
+**UPDATE 1:** It turns out that Android JS support for CSS `:after` is patchy. We've decided to set the `font-family` property on the `<html>` element instead, as it's better supported (despite being a bit of a hack).
+
+---
+
+**UPDATE 2:** The code now looks at `font-family` first, then falls back to `:after`.
+
+---
+
+This has a number of advantages over using `window.matchMedia()`, namely that you only have to maintain your breakpoints in one place and it fails more gracefully.
 
 
-How to use it
-===============================
+## How to use it
 
-1. CSS
--------------------------------
-Define a set of html font-family strings in your stylesheet
-that correspond to the media queries you wish to test for:
+### 1. CSS
+
+Define a set of html `font-family` and/or `:after` strings in your stylesheet that correspond to the media queries you wish to test for:
+
 ```css
-<style>
+html { font-family: "small"; }
 
-	html {
-		font-family: 'mobile';
-	}
+body:after {
+	content: "small";
+	display: none;
+}
 
-	* html { /* IE6 */
-		font-family: 'desktop'
-	}
+@media only screen and (min-width: 450px) {
 	
-	*+html { /* IE7 */
-		font-family: 'desktop'
-	}
+	html { font-family: "medium"; }
+	body:after { content: "medium"; }
 	
-	@media \0screen {
-		html {  /* IE8 */
-			font-family: 'desktop'
-		}
-	}
+}
 
-	/* Reset your font families here!       
-	 ----------------------------------- */
-	body {
-		font-family: Arial, Helvetica, sans-serif;
-	}
+@media only screen and (min-width: 900px) {
+	
+	html { font-family: "large"; }
+	body:after { content: "large"; }
+	
+}
 
-	/* Queries for supported browsers.       
-	 ----------------------------------- */
-
-	@media screen and (min-width: 35em) {
-		html {
-			font-family: "skinny";
-		}
-	}
-
-	@media screen and (min-width: 56em) {
-		html {
-			font-family: "desktop";
-		}
-	}
-
-</style>
+@media only screen and (min-width: 1350px) {
+	
+	html { font-family: "xlarge"; }
+	body:after { content: "xlarge"; }
+	
+}
 ```
 
-2. JS
--------------------------------
-Define the queries you want to test for.. and what to do if they're TRUE
-```javascript
-<script type="text/javascript" src="js/onmediaquery.min.js"></script>
-<script>
+### 2. JS
 
+Define the queries you want to test for.. and what to do if they're TRUE
+
+```javascript
 var queries = [
 	{
-		context: 'mobile',
-		callback: function() {
-			console.log('Mobile callback. Maybe hook up some tel: numbers?');
-			// Your mobile specific logic can go here. 
-		}
+		context  : 'small',
+		callback : function() { console.log('small'); }
 	},
 	{
-		context: 'skinny',
-		callback: function() {
-			console.log('skinny callback! Swap the class on the body element.');
-			// Your tablet specific logic can go here.
-		}
+		context  : 'medium',
+		callback : function() { console.log('medium'); }
 	},
 	{
-		context: 'wide-screen',
-		callback: function() {
-			console.log('wide-screen callback woohoo! Load some heavy desktop JS badddness.');
-			// your desktop specific logic can go here.
-		}
+		context  : 'large',
+		callback : function() { console.log('large'); }
+	},
+	{
+		context  : 'xlarge',
+		callback : function() { console.log('xlarge'); }
 	}
 ];
-// Go!
-MQ.init(queries);
-
-</script>
 ```
 
-3. Adding queries
--------------------------------
-As well as passing an array of objects when you initialise the
-plugin, you can add extra callbacks at any time. This is especially
-handy if you've got multiple JS files across the site that need to
-test whether a query is true.
-```Javascript
-<script>
+### 3. Adding queries
 
-var my_query = MQ.addQuery({
-	context: 'skinny', 
-	callback: function() { 
-		console.log( 'second skinny callback!' )
-	}
+As well as passing an array of objects when you initialise the plugin, you can add extra callbacks at any time. This is especially handy if you've got multiple JS files across the site that need to test whether a query is true:
+
+```javascript
+var q1 = MQ.addQuery({
+	context  : 'large',
+	callback : function() { console.log('large (#2)'); }
 });
-
-</script>
 ```
 
-In the latest release, you can now have a function execute once across a range of contexts.
-Helpful if you want to initialise the code once for desktops and tablets, but leverage a
-custom controller on mobiles, for instance: 
+In the latest release, you can now have a function execute once across a range of contexts; this is helpful, for instance, if you want to initialise the code once for desktops and tablets, but leverage a custom controller on mobiles: 
 
-```Javascrpt
-<script>
-var my_query = MQ.addQuery({
-	context: ['skinny','desktop'],
-	call_for_each_context: false, 
-	callback: function() { 
-		console.log( 'second skinny callback!' )
-	}
+```javascript
+var q2 = MQ.addQuery({
+	context               : ['small', 'medium'],
+	call_for_each_context : false, 
+	callback              : function() { console.warn('small/medium'); }
 });
-</script>
 ```
 
-4. Removing queries
--------------------------------
+### 4. Removing queries
+
 Remove a query by passing in a reference to it:
-```Javascript
-MQ.removeQuery( my_query );
+
+```javascript
+MQ.removeQuery(q1);
 ```
 
 
-5. Marvel at your 1337-ness.
--------------------------------
+### Marvel at your 1337-ness.
+
 Enjoy responsive javascript with a friend today.
 
+---
 
-Josh Barr | Designer | Springload
-www.springload.co.nz
+Josh Barr | Designer | [Springload](http://www.springload.co.nz/)
 
 

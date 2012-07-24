@@ -1,0 +1,91 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+	
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>onMediaQuery - Responsive JS</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	
+	<!-- http://paulirish.com/2009/avoiding-the-fouc-v3/ -->
+	<script>document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');</script>
+	
+	<link rel="stylesheet" href="demo.css">
+	
+	<!-- https://github.com/scottjehl/Respond/ -->
+	<!--[if (lt IE 9) & (!IEMobile)]>
+		<script src="plugins/respond-1.1.0.min.js"></script>
+	<![endif]-->
+	
+</head>
+<body>
+	
+	<h1><a href="https://github.com/JoshBarr/js-media-queries">Documentation</a></h1>
+	<p>Use your browser's JS console to see output.</p>
+	
+	<hr>
+	
+	<ol id="debug"></ol>
+	
+	<script src="../js-media-queries/onmediaquery-0.1.0.js"></script>
+	<script>
+		<!--
+			
+			function msg(x) {
+				
+				var $ol = document.getElementById('debug'),
+				$li = document.createElement('li');
+				$li.innerHTML = String(x);
+				$ol.appendChild($li);
+				
+				if (typeof console !== 'undefined') console.log(x);
+				
+			}
+			
+			queries = [
+				{
+					context  : 'small',
+					callback : function() { msg('small'); }
+				},
+				{
+					context  : 'medium',
+					callback : function() { msg('medium'); }
+				},
+				{
+					context  : 'large',
+					callback : function() { msg('large (#1)'); }
+				},
+				{
+					context  : 'xlarge',
+					callback : function() { msg('xlarge'); }
+				}
+			];
+			
+			window.onload = function() {
+				
+				MQ.init(queries);
+				
+				var q1 = MQ.addQuery({
+					context  : 'large',
+					callback : function() { msg('large (#2)'); }
+				}),
+				
+				q2 = MQ.addQuery({
+					context               : ['small', 'medium'],
+					call_for_each_context : false, 
+					callback              : function() { msg('small/medium'); }
+				});
+				
+				//MQ.removeQuery(q1);
+				
+			};
+			
+		//-->
+	</script>
+
+</body>
+</html>
