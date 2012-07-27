@@ -20,7 +20,19 @@
 
 ##### Browser tests:
 
-* Coming tomorrow...
+* MAC Snow Leopard:
+    * Firefox 14.0.x, Safari 5.1.x, Opera 12.00, Chrome 20.0.x
+* PC Vista:
+    * Firefox 3.6.x, Firefox 14.0.x, Chrome 20.0.x, Safari 5.1.x, Opera 12.00
+    * IE 9.0.x, IE 8.0.x, IE 7.0.x
+* PC XP:
+    * IE 6.0.x
+* iPhone 4:
+    * Safari 4.3 (simulated), Safari 5.1.1, Chrome 19.0.x, Opera Mini 7.0.x
+* iPhone:
+    * Safari 4.3 (simulated)
+* iPad:
+    * Safari 4.3 (simulated), Safari 5.1.1
 
 ---
 
