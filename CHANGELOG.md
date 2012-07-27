@@ -7,6 +7,23 @@
 
 ---
 
+## v0.1.1
+#### July 26, 2012
+
+* Bumped version number.
+* Made "private" methods truly private.
+    * [More info here](http://stackoverflow.com/questions/11621430/javascript-module-pattern-when-to-go-private-with-methods-getters-setters-roo/11621455).
+* Updated README.md.
+* Removed outside `MQ || {}` check.
+    * [More info here](https://gist.github.com/3186282).
+* Updated minified script: Using [YUI Compressor 2.4.2](http://compressorrater.thruhere.net/) with `nomunge`, `preserveAllSemi`, `disableOpt` options.
+
+##### Browser tests:
+
+* Coming tomorrow...
+
+---
+
 ## v0.1.0
 #### July 22, 2012
 

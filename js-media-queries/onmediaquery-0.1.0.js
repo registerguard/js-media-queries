@@ -6,12 +6,12 @@
  * @license   Released under the MIT license.
  *            http://www.opensource.org/licenses/mit-license.php
  * @version   0.1.0
- * @date      Sun 23 July, 2012
+ * @date      Sun 26 July, 2012
  */
 
 var MQ = (function(mq) {
 	
-	mq = mq || {}; // Is this redundant?
+	mq = mq || {}; // Assign mq to mq or an empty object.
 	
 	//--------------------------------------------------------------------------
 	//
@@ -265,4 +265,4 @@ var MQ = (function(mq) {
 	
 	return mq; // Expose the API.
 
-}(MQ || {}));
+}(MQ));

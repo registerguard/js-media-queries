@@ -22,7 +22,7 @@ This has a number of advantages over using `window.matchMedia()`, namely that yo
 
 ### 1. CSS
 
-Define a set of html `font-family` and/or `:after` strings in your stylesheet that correspond to the media queries you wish to test for:
+Define a set of html `font-family` **and** `:after` strings in your stylesheet that correspond to the media queries you wish to test for:
 
 ```css
 html { font-family: "small"; }
