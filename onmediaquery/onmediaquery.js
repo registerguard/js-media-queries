@@ -5,13 +5,12 @@
  * @copyright Copyright (c) 2012 Springload.
  * @license   Released under the MIT license.
  *            http://www.opensource.org/licenses/mit-license.php
- * @version   0.1.0
- * @date      Sun 26 July, 2012
+ * @version   1.0.0
+ * @date      Saturday, October 6, 2012
+ * @see       https://github.com/registerguard/js-media-queries
  */
 
-var MQ = (function(mq) {
-	
-	mq = mq || {}; // Assign mq to mq or an empty object.
+;(function(omq){
 	
 	//--------------------------------------------------------------------------
 	//
@@ -20,31 +19,36 @@ var MQ = (function(mq) {
 	//--------------------------------------------------------------------------
 	
 	/**
-	 * Initialises the MQ object and sets the initial media query callbacks.
+	 * initializes the oMQ object and sets the initial media query callbacks.
 	 *
 	 * @param query { object } The query object.
+	 * @constructor
 	 */
 	
-	mq.init = function(query) {
+	omq.init = function(query) {
 		
-		this.callbacks   = []; // Container for all callbacks registered with the plugin.
-		this.context     = ''; // Current active query.
-		this.new_context = ''; // Current active query to be read inside callbacks, as this.context won't be set when they're called!
+		this.callbacks    = []; // Container for all callbacks registered with the plugin.
+		this.last_context = ''; // Current active query.
+		this.context      = ''; // Current active query to be read inside callbacks, as this.last_context won't be set when they're called!
 		
 		if (typeof query !== 'undefined') {
 			
-			for (var i = 0, l = query.length; i < l; i++) this.addQuery(query[i]);
+			for (var i = 0, l = query.length; i < l; i++) {
+				
+				this.addQuery(query[i]);
+				
+			}
 			
 		}
 		
-		_addEvent(window, 'resize', _listenForChange, mq); // Add a listener to the window.resize event, pass mq/self as the scope.
+		_addEvent(window, 'resize', _listenForChange, omq); // Add a listener to the window.resize event, pass omq/self as the scope.
 		
 		_listenForChange.call(this); // Figure out which query is active on load.
 		
 	};
 	
 	//--------------------------------------------------------------------
-
+	
 	/**
 	 * Attach a new query to test.
 	 *
@@ -59,7 +63,7 @@ var MQ = (function(mq) {
 	 * @return { object } A reference to the query that was added.
 	 */
 	
-	mq.addQuery = function(query) {
+	omq.addQuery = function(query) {
 		
 		if (query) {
 			
@@ -72,7 +76,7 @@ var MQ = (function(mq) {
 			if (typeof query.call_for_each_context !== 'boolean') query.call_for_each_context = true; // Default
 			
 			// Fire the added callback if it matches the current context:
-			if ((this.context) && _inArray(this.context, query.context)) query.callback();
+			if ((this.last_context) && _inArray(this.last_context, query.context)) query.callback();
 			
 			return this.callbacks[this.callbacks.length - 1];
 			
@@ -81,14 +85,14 @@ var MQ = (function(mq) {
 	};
 	
 	//--------------------------------------------------------------------
-
+	
 	/**
 	 * Remove a query by reference.
 	 *
 	 * @param query { object }
 	 */
 	
-	mq.removeQuery = function(query) {
+	omq.removeQuery = function(query) {
 		
 		if (query) {
 			
@@ -97,6 +101,22 @@ var MQ = (function(mq) {
 			while ((match = this.callbacks.indexOf(query)) > -1) this.callbacks.splice(match, 1);
 			
 		}
+		
+	};
+	
+	//--------------------------------------------------------------------
+	
+	/**
+	 * Get the current context.
+	 *
+	 * @return { string } The currently defined media query.
+	 */
+	
+	omq.getContext = function() {
+		
+		var context = _contentAfter(document.body) || _fontFamily(document.documentElement); // Returns the first value that is "truth-like", or the last value, if no values are "truth-like".
+		
+		return context.replace(/['",]/g, ''); // Android browsers place a "," after an item in the font family list; most browsers either single or double quote the string.
 		
 	};
 	
@@ -115,29 +135,27 @@ var MQ = (function(mq) {
 	function _listenForChange() {
 		
 		// Get the value of :after or font-family from the chosen element style:
-		var context = _contentAfter(document.body) || _fontFamily(document.documentElement); // Returns the first value that is "truth-like", or the last value, if no values are "truth-like".
+		var context = this.getContext();
 		
 		// Do we have a context? Note that Opera doesn't jive with font-family on the <html> element...
 		if (context) {
 			
-			context = context.replace(/['",]/g, ''); // Android browsers place a "," after an item in the font family list; most browsers either single or double quote the string.
-			
-			if (context !== this.context) {
+			if (context !== this.last_context) {
 				
-				this.new_context = context;
+				this.context = context;
 				
-				_triggerCallbacks.call(this, this.new_context);
+				_triggerCallbacks.call(this, this.context);
 				
 			}
 			
-			this.context = this.new_context;
+			this.last_context = this.context;
 			
 		}
 		
 	};
 	
 	//--------------------------------------------------------------------
-
+	
 	/**
 	 * Loop through the stored callbacks and execute the ones that are bound to the current context.
 	 *
@@ -154,9 +172,9 @@ var MQ = (function(mq) {
 			for (var i = 0, l = this.callbacks.length; i < l; i++) {
 				
 				// Don't call for each context?
-				if ((this.callbacks[i].call_for_each_context === false) && _inArray(this.context, this.callbacks[i].context)) continue; // Was previously called, and we don't want to call it for each context.
+				if ((this.callbacks[i].call_for_each_context === false) && _inArray(this.last_context, this.callbacks[i].context)) continue; // Was previously called, and we don't want to call it for each context.
 				
-				callback_function = this.callbacks[i].callback;
+				callback_function = this.callbacks[i].callback; // Callback function.
 				
 				if (_inArray(context, this.callbacks[i].context) && (callback_function !== undefined)) callback_function(); // Callback!
 				
@@ -263,6 +281,6 @@ var MQ = (function(mq) {
 	
 	//--------------------------------------------------------------------
 	
-	return mq; // Expose the API.
-
-}(MQ));
+	return omq; // Expose the API.
+	
+}(window.oMQ = window.oMQ || {})); // Use existing namespace or make a new object of that namespace.

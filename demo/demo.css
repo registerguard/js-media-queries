@@ -3,86 +3,163 @@
 /*
 **--------------------------------------------------------------------------
 **
-** Small:
+** [ A ]LPHA
 **
 **--------------------------------------------------------------------------
 */
 
-html { font-family: "small"; }
+/**
+ * For Android/other browsers:
+ */
 
-/*
-**----------------------------------
-** IE with no javascript:
-**----------------------------------
-*/
+html { font-family: "alpha"; }
 
-/* If not using respond.js, you might need: */
+/**
+ * If not using respond.js, you might need:
+ */
+
 html.no-js {
-	font-family: "large"\9; /* <=IE8 */
+	font-family: "large"\0/; /* IE8 */
 	*font-family: "large";  /* <=IE7 */
 	_font-family: "large";  /* <=IE6 */
 }
 
+/**
+ * Make Opera/other happy:
+ */
+
+body:after { content: "alpha"; display: none; }
+
+/**
+ * Override `<html>` inheritance:
+ */
+
+body { font-family: Arial, sans-serif; }
+
+/**
+ * Demo-specific styles:
+ */
+
+body { background: yellow; }
+.bravo, .charlie, .large, .delta { display: none; }
+.alpha { display: block; }
+
 /*
-**----------------------------------
-** Override <html> inheritance:
-**----------------------------------
+**--------------------------------------------------------------------------
+**
+** [ B ]RAVO
+**
+**--------------------------------------------------------------------------
 */
 
-body { font-family: Arial, sans-serif; } /* Serif: Cambria, Georgia, serif; */
-
-/*
-**----------------------------------
-** Generate pseudo-element:
-**----------------------------------
-*/
-
-body:after {
-	content: "small";
-	display: none;
+@media only screen and (min-width: 665px) {
+	
+	/**
+	 * For Android/other browsers:
+	 */
+	
+	html { font-family: "bravo"; }
+	
+	/**
+	 * Make Opera/other happy:
+	 */
+	
+	body:after { content: "bravo"; }
+	
+	/**
+	 * Demo-specific styles:
+	 */
+	
+	body { background: lime; }
+	.alpha { display: none; }
+	.bravo { display: block; }
+	
 }
 
 /*
 **--------------------------------------------------------------------------
 **
-** Medium:
+** [ C ]HARLIE
 **
 **--------------------------------------------------------------------------
 */
 
-@media only screen and (min-width: 450px) {
+@media only screen and (min-width: 1005px) {
 	
-	html { font-family: "medium"; }
-	body:after { content: "medium"; }
+	/**
+	 * For Android/other browsers:
+	 */
+	
+	html { font-family: "charlie"; }
+	
+	/**
+	 * Make Opera/other happy:
+	 */
+	
+	body:after { content: "charlie"; }
+	
+	/**
+	 * Demo-specific styles:
+	 */
+	
+	body { background: green; }
+	.bravo { display: none; }
+	.charlie { display: block; }
 	
 }
 
-/*
-**--------------------------------------------------------------------------
-**
-** Large:
-**
-**--------------------------------------------------------------------------
-*/
-
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1200px) {
+	
+	/**
+	 * For Android/other browsers:
+	 */
 	
 	html { font-family: "large"; }
+	
+	/**
+	 * Make Opera/other happy:
+	 */
+	
 	body:after { content: "large"; }
+	
+	/**
+	 * Demo-specific styles:
+	 */
+	
+	body { background: gray; }
+	.charlie { display: none; }
+	.large { display: block; }
 	
 }
 
 /*
 **--------------------------------------------------------------------------
 **
-** xLarge:
+** [ D ]ELTA
 **
 **--------------------------------------------------------------------------
 */
 
-@media only screen and (min-width: 1350px) {
+@media only screen and (min-width: 1345px) {
 	
-	html { font-family: "xlarge"; }
-	body:after { content: "xlarge"; }
+	/**
+	 * For Android/other browsers:
+	 */
+	
+	html { font-family: "delta"; }
+	
+	/**
+	 * Make Opera/other happy:
+	 */
+	
+	body:after { content: "delta"; }
+	
+	/**
+	 * Demo-specific styles:
+	 */
+	
+	body { background: orange; }
+	.large { display: none; }
+	.delta { display: block; }
 	
 }

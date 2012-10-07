@@ -7,6 +7,52 @@
 
 ---
 
+## v1.0.0
+#### October 6, 2012
+
+* New version number: `v1.0.0`!
+* Removed version number from file name.
+	* Added version number to header comment inside JS file.
+* Removed `min` version (folks should minify via their build process).
+* Cleaned up JS:
+	* Fixed some missing tabs.
+	* Simplified IIFE closure.
+	* Added `getContext()` public method (returns the current context and can be used before `init()` is called).
+	* Minor comment/code tweaks.
+	* **Backwards incompatable changes:**
+		* `MQ`/`mq` variable names now `oMQ`/`omq` respectively.
+		* `this.context` to `this.last_context`.
+		* Changed `this.new_context` to `this.context`.
+* Updated demo `html` and `css`.
+* Updated `js` plugin `respond.min.js` to latest `min` version (now just drag/drop from that project's repo).
+* Renamed `js-media-queries` to `onmediaquery`.
+* Moved most information in `README.md` to the WIKI.
+* Added QR code to `README.md`.
+
+##### Browser tests:
+
+* MAC Snow Leopard:
+	* Firefox `15.0.1`, Safari `6.0.1 (8536.26.14)`, Opera `12.02 (1578)`, Chrome `22.0.1229.79`
+* PC Vista:
+	* Firefox `15.0.1`, Chrome `22.0.1229.79 m`, Safari `5.1.7 (7534.57.2)`, Opera `12.02 (1578)`
+	* IE `9.0.8112.16421`, IE `8.0.6001.18702`, IE `7.0.6002.18005`
+* PC XP:
+    * IE `6.0.2900.5512.xpsp_sp3_gdr.120504-1619`
+* iPhone (Retina 4-inch):
+	* Safari (simulated)
+* iPhone (Retina 3.5-inch), iOS `6.0`:
+	* Safari (simulated), Safari, Chrome `21.0.1180.82`, Opera Mini `7.0.4.44138`
+* iPhone, iOS `6.0`:
+	* Safari (simulated)
+* iPad (Retina), iOS `6.0`:
+	* Safari
+* iPad, iOS `6.0`:
+	* Safari (simulated)
+* iPad, iOS `5.1.1`:
+	* Safari
+
+---
+
 ## v0.1.1
 #### July 26, 2012
 

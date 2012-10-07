@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>onMediaQuery - Responsive JS</title>
+	<title>onMediaQuery: Responsive Javascript</title>
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -18,20 +18,28 @@
 	
 	<!-- https://github.com/scottjehl/Respond/ -->
 	<!--[if (lt IE 9) & (!IEMobile)]>
-		<script src="plugins/respond-1.1.0.min.js"></script>
+		<script src="plugins/respond.min.js"></script>
 	<![endif]-->
 	
 </head>
 <body>
 	
-	<h1><a href="https://github.com/JoshBarr/js-media-queries">Documentation</a></h1>
+	<h1>onMediaQuery: <i>Responsive javascript</i></h1>
 	<p>Use your browser's JS console to see output.</p>
+	
+	<hr>
+	
+	<h2 class="alpha">Alpha</h2>
+	<h2 class="bravo">Bravo</h2>
+	<h2 class="charlie">Charlie</h2>
+	<h2 class="large">Large</h2>
+	<h2 class="delta">Delta</h2>
 	
 	<hr>
 	
 	<ol id="debug"></ol>
 	
-	<script src="../js-media-queries/onmediaquery-0.1.1.js"></script>
+	<script src="../onmediaquery/onmediaquery.js"></script>
 	<script>
 		<!--
 			
@@ -47,40 +55,68 @@
 			}
 			
 			queries = [
+				
 				{
-					context  : 'small',
-					callback : function() { msg('small'); }
+					context  : 'alpha',
+					callback : function() {
+						
+						msg('CALLBACK: alpha, CURRENT CONTEXT: ' + oMQ.context + ', LAST CONTEXT: ' + oMQ.last_context);
+						
+					}
 				},
 				{
-					context  : 'medium',
-					callback : function() { msg('medium'); }
+					context  : 'bravo',
+					callback : function() {
+						
+						msg('CALLBACK: bravo, CURRENT CONTEXT: ' + oMQ.context + ', LAST CONTEXT: ' + oMQ.last_context);
+						
+					}
 				},
 				{
-					context  : 'large',
-					callback : function() { msg('large (#1)'); }
+					context  : 'charlie',
+					callback : function() {
+						
+						msg('CALLBACK: charlie, CURRENT CONTEXT: ' + oMQ.context + ', LAST CONTEXT: ' + oMQ.last_context);
+						
+					}
 				},
 				{
-					context  : 'xlarge',
-					callback : function() { msg('xlarge'); }
+					context  : 'delta',
+					callback : function() {
+						
+						msg('CALLBACK: delta, CURRENT CONTEXT: ' + oMQ.context + ', LAST CONTEXT: ' + oMQ.last_context);
+						
+					}
 				}
+				
 			];
 			
 			window.onload = function() {
 				
-				MQ.init(queries);
+				msg('CONTEXT BEFORE INIT: ' + oMQ.getContext());
 				
-				var q1 = MQ.addQuery({
-					context  : 'large',
-					callback : function() { msg('large (#2)'); }
-				}),
+				oMQ.init(queries);
 				
-				q2 = MQ.addQuery({
-					context               : ['small', 'medium'],
-					call_for_each_context : false, 
-					callback              : function() { msg('small/medium'); }
+				var my_query = oMQ.addQuery({
+					context: 'large', 
+					callback: function() {
+						
+						msg('CALLBACK: large, CURRENT CONTEXT: ' + oMQ.context + ', LAST CONTEXT: ' + oMQ.last_context);
+						
+					}
 				});
 				
-				//MQ.removeQuery(q1);
+				var my_other_query = oMQ.addQuery({
+					context: ['charlie', 'large', 'delta'],
+					call_for_each_context: false,
+					callback: function() {
+						
+						msg('CALLBACK: charlie/large/delta, CURRENT CONTEXT: ' + oMQ.context + ', LAST CONTEXT: ' + oMQ.last_context);
+						
+					}
+				});
+				
+				//oMQ.removeQuery(my_query);
 				
 			};
 			
