@@ -5,12 +5,13 @@
  * @copyright Copyright (c) 2012 Springload.
  * @license   Released under the MIT license.
  *            http://www.opensource.org/licenses/mit-license.php
+ * @patterns  1) Closure 2) Alias 3) Namespace extension.
  * @version   1.0.0
  * @date      Saturday, October 6, 2012
  * @see       https://github.com/registerguard/js-media-queries
  */
 
-;(function(omq){
+;(function(omq) { // rgne.ws/V4HOQy
 	
 	//--------------------------------------------------------------------------
 	//
@@ -19,7 +20,7 @@
 	//--------------------------------------------------------------------------
 	
 	/**
-	 * initializes the oMQ object and sets the initial media query callbacks.
+	 * Initializes the oMQ object and sets the initial media query callbacks.
 	 *
 	 * @param query { object } The query object.
 	 * @constructor
