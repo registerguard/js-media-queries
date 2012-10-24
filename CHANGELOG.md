@@ -7,6 +7,44 @@
 
 ---
 
+## v1.1.0
+#### Mmmmm [D]D, YYYY
+
+* Merged @patocallaghan's fork:
+	* Modified the callback firing functionality to work with mediaquery context `unmatch`.
+	* Refactored code to pass linting.
+	* Introducted getContext() and getPreviousContext() convenience methods to retrieve mediaquery state.
+	* Added ability to fire callbacks when a mediaquery unmatches.
+* Added Pat to `CONTRIBUTORS.md`.
+* New version number: `v2.0.0`.
+* Fixed typo in `MIT-LICENSE`.
+* Removed `TODO.md` (moved to the project's issue center).
+* Updated demo files to reflect the new changes.
+
+##### Browser tests:
+
+* MAC Snow Leopard:
+	* Firefox `15.0.1`, Safari `6.0.1 (8536.26.14)`, Opera `12.02 (1578)`, Chrome `22.0.1229.79`
+* PC Vista:
+	* Firefox `15.0.1`, Chrome `22.0.1229.79 m`, Safari `5.1.7 (7534.57.2)`, Opera `12.02 (1578)`
+	* IE `9.0.8112.16421`, IE `8.0.6001.18702`, IE `7.0.6002.18005`
+* PC XP:
+    * IE `6.0.2900.5512.xpsp_sp3_gdr.120504-1619`
+* iPhone (Retina 4-inch):
+	* Safari (simulated)
+* iPhone (Retina 3.5-inch), iOS `6.0`:
+	* Safari (simulated), Safari, Chrome `21.0.1180.82`, Opera Mini `7.0.4.44138`
+* iPhone, iOS `6.0`:
+	* Safari (simulated)
+* iPad (Retina), iOS `6.0`:
+	* Safari
+* iPad, iOS `6.0`:
+	* Safari (simulated)
+* iPad, iOS `5.1.1`:
+	* Safari
+
+---
+
 ## v1.0.0
 #### October 6, 2012
 

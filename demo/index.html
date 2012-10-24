@@ -58,25 +58,40 @@
 				
 				{
 					context  : 'alpha',
-					callback : function() {
+					match : function() {
 						
-						msg('CALLBACK: alpha, CURRENT CONTEXT: ' + oMQ.context + ', LAST CONTEXT: ' + oMQ.last_context);
+						msg('MATCH: alpha, CURRENT CONTEXT: ' + oMQ.getCurrentContext() + ', LAST CONTEXT: ' + oMQ.getLastContext());
+						
+					},
+					unmatch: function () {
+						
+						msg('UNMATCH: alpha, CURRENT CONTEXT: ' + oMQ.getCurrentContext() + ', LAST CONTEXT: ' + oMQ.getLastContext());
 						
 					}
 				},
 				{
 					context  : 'bravo',
-					callback : function() {
+					match : function() {
 						
-						msg('CALLBACK: bravo, CURRENT CONTEXT: ' + oMQ.context + ', LAST CONTEXT: ' + oMQ.last_context);
+						msg('MATCH: bravo, CURRENT CONTEXT: ' + oMQ.getCurrentContext() + ', LAST CONTEXT: ' + oMQ.getLastContext());
+						
+					},
+					unmatch: function () {
+						
+						msg('UNMATCH: bravo, CURRENT CONTEXT: ' + oMQ.getCurrentContext() + ', LAST CONTEXT: ' + oMQ.getLastContext());
 						
 					}
 				},
 				{
 					context  : 'charlie',
-					callback : function() {
+					match : function() {
 						
-						msg('CALLBACK: charlie, CURRENT CONTEXT: ' + oMQ.context + ', LAST CONTEXT: ' + oMQ.last_context);
+						msg('MATCH: charlie, CURRENT CONTEXT: ' + oMQ.getCurrentContext() + ', LAST CONTEXT: ' + oMQ.getLastContext());
+						
+					},
+					unmatch: function () {
+						
+						msg('UNMATCH: charlie, CURRENT CONTEXT: ' + oMQ.getCurrentContext() + ', LAST CONTEXT: ' + oMQ.getLastContext());
 						
 					}
 				},
@@ -84,7 +99,12 @@
 					context  : 'delta',
 					callback : function() {
 						
-						msg('CALLBACK: delta, CURRENT CONTEXT: ' + oMQ.context + ', LAST CONTEXT: ' + oMQ.last_context);
+						msg('MATCH: delta, CURRENT CONTEXT: ' + oMQ.getCurrentContext() + ', LAST CONTEXT: ' + oMQ.getLastContext());
+						
+					},
+					unmatch: function () {
+						
+						msg('UNMATCH: delta, CURRENT CONTEXT: ' + oMQ.getCurrentContext() + ', LAST CONTEXT: ' + oMQ.getLastContext());
 						
 					}
 				}
@@ -99,9 +119,14 @@
 				
 				var my_query = oMQ.addQuery({
 					context: 'large', 
-					callback: function() {
+					match: function() {
 						
-						msg('CALLBACK: large, CURRENT CONTEXT: ' + oMQ.context + ', LAST CONTEXT: ' + oMQ.last_context);
+						msg('MATCH: large, CURRENT CONTEXT: ' + oMQ.getCurrentContext() + ', LAST CONTEXT: ' + oMQ.getLastContext());
+						
+					},
+					unmatch: function () {
+						
+						msg('UNMATCH: large, CURRENT CONTEXT: ' + oMQ.getCurrentContext() + ', LAST CONTEXT: ' + oMQ.getLastContext());
 						
 					}
 				});
@@ -109,9 +134,14 @@
 				var my_other_query = oMQ.addQuery({
 					context: ['charlie', 'large', 'delta'],
 					call_for_each_context: false,
-					callback: function() {
+					match: function() {
 						
-						msg('CALLBACK: charlie/large/delta, CURRENT CONTEXT: ' + oMQ.context + ', LAST CONTEXT: ' + oMQ.last_context);
+						msg('MATCH: charlie/large/delta, CURRENT CONTEXT: ' + oMQ.getCurrentContext() + ', LAST CONTEXT: ' + oMQ.getLastContext());
+						
+					},
+					unmatch: function () {
+						
+						msg('UNMATCH: charlie/large/delta, CURRENT CONTEXT: ' + oMQ.getCurrentContext() + ', LAST CONTEXT: ' + oMQ.getLastContext());
 						
 					}
 				});
