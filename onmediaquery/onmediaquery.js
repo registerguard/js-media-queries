@@ -80,10 +80,7 @@
 			
 			if ((this.last_context !== '') && _inArray(this.last_context, query_object.context)) {
 				
-				console.log(query_object);
-				
 				// Fire the added callback if it matches the current context:
-				//query_object.callback();
 				query_object.match();
 				
 			}
@@ -121,24 +118,6 @@
 	//--------------------------------------------------------------------
 	
 	/**
-	 * Get the current context.
-	 *
-	 * @return { string } The currently defined media query.
-	 */
-	
-	omq.getContext = function() {
-		
-		// Returns the first value that is "truth-like", or the last value, if no values are "truth-like":
-		var context = _contentAfter(document.body) || _fontFamily(document.documentElement);
-		
-		// Android browsers place a "," after an item in the font family list; most browsers either single or double quote the string:
-		return context.replace(/['",]/g, '');
-		
-	};
-	
-	//--------------------------------------------------------------------
-	
-	/**
 	 * Getter that returns the media query's last context.
 	 *
 	 * @return { string } The current media query's context.
@@ -157,9 +136,9 @@
 	 * @return { string } Returns the current media query's context.
 	 */
 	
-	omq.getCurrentContext = function() {
+	omq.getContext = function() {
 		
-		return this.context;
+		return (this.context) ? this.context : _pickContext();
 		
 	};
 	
@@ -178,7 +157,7 @@
 	function _listenForChange() {
 		
 		// Get the value of :after or font-family from the chosen element style:
-		var query_string = this.getContext();
+		var query_string = _pickContext();
 		
 		// Do we have a context? Note that Opera doesn't jive with font-family on the <html> element...
 		if (query_string !== null) {
@@ -274,6 +253,24 @@
 			}
 			
 		}
+		
+	}
+	
+	//--------------------------------------------------------------------
+	
+	/**
+	 * Get the current context.
+	 *
+	 * @return { string } The currently defined media query.
+	 */
+	
+	function _pickContext() {
+		
+		// Returns the first value that is "truth-like", or the last value, if no values are "truth-like":
+		var context = _contentAfter(document.body) || _fontFamily(document.documentElement);
+		
+		// Android browsers place a "," after an item in the font family list; most browsers either single or double quote the string:
+		return context.replace(/['",]/g, '');
 		
 	}
 	
