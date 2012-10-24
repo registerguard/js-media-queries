@@ -60,7 +60,7 @@
 	
 	omq.addQuery = function(query_object) {
 		
-		if ((query_object !== null) && (query_object !== undefined)) {
+		if (query_object) {
 			
 			this.callbacks.push(query_object);
 			
@@ -78,7 +78,7 @@
 				
 			}
 			
-			if ((this.last_context !== '') && _inArray(this.last_context, query_object.context)) {
+			if (this.last_context && _inArray(this.last_context, query_object.context)) {
 				
 				// Fire the added callback if it matches the current context:
 				query_object.match();
@@ -101,7 +101,7 @@
 	
 	omq.removeQuery = function(query_object) {
 		
-		if ((query_object !== null) && (query_object !== undefined)) {
+		if (query_object) { // rgne.ws/VpFmUI
 			
 			var match = -1;
 			
@@ -160,7 +160,7 @@
 		var query_string = _pickContext();
 		
 		// Do we have a context? Note that Opera doesn't jive with font-family on the <html> element...
-		if (query_string !== null) {
+		if (query_string) {
 			
 			if (query_string !== this.last_context) {
 				
@@ -192,7 +192,9 @@
 	 */
 	
 	function _triggerCallbacks(size, key) {
-			
+		
+		if (size && key) {
+				
 			var callback_function;
 			
 			for (var i = 0, l = this.callbacks.length; i < l; i++) {
@@ -217,6 +219,8 @@
 				}
 				
 			}
+			
+		}
 		
 	}
 	
@@ -233,7 +237,7 @@
 	
 	function _addEvent(elem, type, eventHandle, eventContext) {
 		
-		if ((elem !== null) && (elem !== undefined)) {
+		if (elem) { // @TODO: Should we check the other params?
 			
 			if (elem.addEventListener) {
 				
@@ -311,7 +315,7 @@
 	
 	function _fontFamily(elem) {
 		
-		if ((elem !== null) && (elem !== undefined)) {
+		if (elem) {
 			
 			// return (IE browser?) ? (Return IE fontFamily) : ((W3C browser?) ? (Return W3C font-family) : Return empty string);
 			return (elem.currentStyle) ? elem.currentStyle['fontFamily'] : ((window.getComputedStyle) ? window.getComputedStyle(el).getPropertyValue('font-family') : '');
@@ -331,7 +335,7 @@
 	
 	function _contentAfter(elem) {
 		
-		if ((elem !== null) && (elem !== undefined)) {
+		if (elem) {
 			
 			return (window.getComputedStyle) ? window.getComputedStyle(elem, ':after').getPropertyValue('content') : ''; // getPropertyValue() Returns an empty string in Firefox and Opera and null in Google Chrome and Safari.
 			
