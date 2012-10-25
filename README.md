@@ -17,8 +17,6 @@ This has a number of advantages over using `window.matchMedia()`, namely that yo
 
 **UPDATE 2:** The code now looks at `:after` first (this makes Opera happy) and then falls back to `font-family` (setting both is now a **requirement**). View the `CHANGELOG.md` for a list of browsers this code has been tested in.
 
----
-
 
 ## How to use it
 
