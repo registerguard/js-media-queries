@@ -119,12 +119,14 @@
 	
 	/**
 	 * Getter that returns the media query's last context.
+	 * If there is no last context, then the current context is returned.
 	 *
 	 * @return { string } The current media query's context.
 	 */
+	
 	omq.getLastContext = function() {
 		
-		return this.last_context;
+		return (this.last_context) ? this.last_context : this.context;
 		
 	};
 	
@@ -132,6 +134,7 @@
 	
 	/**
 	 * Getter that returns the media query's current context.
+	 * This method can be called before oMQ has been instantiated.
 	 *
 	 * @return { string } Returns the current media query's context.
 	 */
