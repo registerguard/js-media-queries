@@ -20,7 +20,7 @@
 	//--------------------------------------------------------------------------
 	
 	/**
-	 * Initializes the oMQ object and sets the initial media query callbacks.
+	 * Initializes the `oMQ` object and sets the initial media query callbacks.
 	 *
 	 * @param query_array { object } The query object.
 	 * @constructor
@@ -28,9 +28,10 @@
 	
 	omq.init = function(query_array) {
 		
-		this.callbacks    = []; // Container for all callbacks registered with the plugin.
-		this.last_context = ''; // Current active query.
-		this.context      = ''; // Current active query to be read inside callbacks, as this.last_context won't be set when they're called!
+		// rgne.ws/UJ8hYh
+		this._callbacks    = []; // Container for all callbacks registered with the plugin.
+		this._context      = ''; // Current active query to be read inside callbacks, as `this._last_context` won't be set when they're called!
+		this._last_context = ''; // Current active query.
 		
 		if (typeof query_array !== 'undefined') {
 			
@@ -42,7 +43,7 @@
 			
 		}
 		
-		// Add a listener to the window.resize event, pass omq/self as the scope:
+		// Add a listener to the `window.resize` event, pass `omq`/`self` as the scope:
 		_addEvent(window, 'resize', _listenForChange, omq);
 		
 		// Figure out which query is active on load:
@@ -62,7 +63,7 @@
 		
 		if (query_object) {
 			
-			this.callbacks.push(query_object);
+			this._callbacks.push(query_object);
 			
 			if (typeof query_object.context === 'string') {
 				
@@ -78,14 +79,14 @@
 				
 			}
 			
-			if (this.last_context && _inArray(this.last_context, query_object.context)) {
+			if (this._last_context && _inArray(this._last_context, query_object.context)) {
 				
 				// Fire the added callback if it matches the current context:
 				query_object.match();
 				
 			}
 			
-			return this.callbacks[this.callbacks.length - 1];
+			return this._callbacks[this._callbacks.length - 1];
 			
 		}
 		
@@ -105,13 +106,28 @@
 			
 			var match = -1;
 			
-			while ((match = this.callbacks.indexOf(query_object)) > -1) {
+			while ((match = this._callbacks.indexOf(query_object)) > -1) {
 				
-				this.callbacks.splice(match, 1);
+				this._callbacks.splice(match, 1);
 				
 			}
 			
 		}
+		
+	};
+	
+	//--------------------------------------------------------------------
+	
+	/**
+	 * Getter that returns the media query's current context.
+	 * This method can be called before `oMQ` has been instantiated.
+	 *
+	 * @return { string } Returns the current media query's context.
+	 */
+	
+	omq.getContext = function() {
+		
+		return (this._context) ? this._context : _pickContext();
 		
 	};
 	
@@ -126,22 +142,7 @@
 	
 	omq.getLastContext = function() {
 		
-		return (this.last_context) ? this.last_context : this.context;
-		
-	};
-	
-	//--------------------------------------------------------------------
-	
-	/**
-	 * Getter that returns the media query's current context.
-	 * This method can be called before oMQ has been instantiated.
-	 *
-	 * @return { string } Returns the current media query's context.
-	 */
-	
-	omq.getContext = function() {
-		
-		return (this.context) ? this.context : _pickContext();
+		return (this._last_context) ? this._last_context : this._context;
 		
 	};
 	
@@ -152,33 +153,33 @@
 	//--------------------------------------------------------------------------
 	
 	/**
-	 * Binds to the window.onResize and checks for media query changes.
+	 * Binds to the `window.onResize` and checks for media query changes.
 	 *
 	 * @this { object } Current instance.
 	 */
 	
 	function _listenForChange() {
 		
-		// Get the value of :after or font-family from the chosen element style:
+		// Get the value of `:after` or `font-family` from the chosen element style:
 		var query_string = _pickContext();
 		
-		// Do we have a context? Note that Opera doesn't jive with font-family on the <html> element...
+		// Do we have a context? Note that Opera doesn't jive with `font-family` on the `<html>` element...
 		if (query_string) {
 			
-			if (query_string !== this.last_context) {
+			if (query_string !== this._last_context) {
 				
-				this.context = query_string;
+				this._context = query_string;
 				
 				// Unmatched callback:
-				_triggerCallbacks.call(this, this.last_context, 'unmatch');
+				_triggerCallbacks.call(this, this._last_context, 'unmatch');
 				
 				// Matched callback:
-				_triggerCallbacks.call(this, this.context, 'match');
+				_triggerCallbacks.call(this, this._context, 'match');
 				
 			}
 			
 			// Update the last context:
-			this.last_context = this.context;
+			this._last_context = this._context;
 			
 		}
 		
@@ -200,12 +201,12 @@
 				
 			var callback_function;
 			
-			for (var i = 0, l = this.callbacks.length; i < l; i++) {
+			for (var i = 0, l = this._callbacks.length; i < l; i++) {
 				
 				// Don't call for each context?
-				if (this.callbacks[i].call_for_each_context === false) {
+				if (this._callbacks[i].call_for_each_context === false) {
 					
-					if (((key === 'match') && _inArray(this.last_context, this.callbacks[i].context)) || ((key === 'unmatch') && _inArray(this.context, this.callbacks[i].context))) {
+					if (((key === 'match') && _inArray(this._last_context, this._callbacks[i].context)) || ((key === 'unmatch') && _inArray(this._context, this._callbacks[i].context))) {
 						
 						continue; // Was previously called, and we don't want to call it for each context.
 						
@@ -213,9 +214,9 @@
 					
 				}
 				
-				callback_function = this.callbacks[i][key]; // Callback function.
+				callback_function = this._callbacks[i][key]; // Callback function.
 				
-				if (_inArray(size, this.callbacks[i].context) && (callback_function !== undefined)) {
+				if (_inArray(size, this._callbacks[i].context) && (callback_function !== undefined)) {
 					
 					callback_function(); // Callback!
 					
@@ -254,7 +255,7 @@
 				
 			} else {
 				
-				// Otherwise, replace the current thing bound to on[whatever]!
+				// Otherwise, replace the current thing bound to `on[whatever]`!
 				elem['on' + type] = function() { eventHandle.call(eventContext); }; // @TODO: Consider refactoring.
 				
 			}
@@ -274,10 +275,10 @@
 	function _pickContext() {
 		
 		// Returns the first value that is "truth-like", or the last value, if no values are "truth-like":
-		var context = _contentAfter(document.body) || _fontFamily(document.documentElement);
+		var pick = _contentAfter(document.body) || _fontFamily(document.documentElement);
 		
 		// Android browsers place a "," after an item in the font family list; most browsers either single or double quote the string:
-		return context.replace(/['",]/g, '');
+		return pick.replace(/['",]/g, '');
 		
 	}
 	
@@ -310,9 +311,9 @@
 	//--------------------------------------------------------------------
 	
 	/**
-	 * Get the font-family style value of the passed element's style.
+	 * Get the `font-family` style value of the passed element's style.
 	 *
-	 * @param elem { object } The Element that is the root element of the document (for example, the <html> element for HTML documents).
+	 * @param elem { object } The Element that is the root element of the document (for example, the `<html>` element for HTML documents).
 	 * @return { string } Value or empty string.
 	 */
 	
@@ -330,9 +331,9 @@
 	//--------------------------------------------------------------------
 	
 	/**
-	 * Get the :after content value of from the passed element's style.
+	 * Get the `:after` `content` value of from the passed element's style.
 	 *
-	 * @param elem { object } The <body> or <frameset> node of the current document.
+	 * @param elem { object } The `<body>` or `<frameset>` node of the current document.
 	 * @return { string } Value or empty string.
 	 */
 	

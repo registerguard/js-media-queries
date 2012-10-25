@@ -64,23 +64,18 @@ Define the queries you want to test for.. and what to do if they're TRUE
 var queries = [
 	{
 		context : 'small',
-		match   : function() { console.log('MATCH: small'); }
+		match   : function() { console.log('MATCH: small'); },
 		unmatch : function() { console.log('UNMATCH: small'); }
 	},
 	{
 		context : 'medium',
-		match   : function() { console.log('MATCH: medium'); }
+		match   : function() { console.log('MATCH: medium'); },
 		unmatch : function() { console.log('UNMATCH: medium'); }
 	},
 	{
 		context : 'large',
-		match   : function() { console.log('MATCH: large'); }
+		match   : function() { console.log('MATCH: large'); },
 		unmatch : function() { console.log('UNMATCH: large'); }
-	},
-	{
-		context : 'xlarge',
-		match   : function() { console.log('MATCH: xlarge'); }
-		unmatch : function() { console.log('UNMATCH: xlarge'); }
 	}
 ];
 ```
@@ -97,9 +92,9 @@ As well as passing an array of objects when you initialise the plugin, you can a
 
 ```javascript
 var q1 = oMQ.addQuery({
-	context : 'large',
-	match   : function() { console.log('MATCH: large (#2)'); }
-	unmatch : function() { console.log('UNMATCH: large (#2)'); }
+	context : 'xlarge',
+	match   : function() { console.log('MATCH: xlarge'); },
+	unmatch : function() { console.log('UNMATCH: xlarge'); }
 });
 ```
 
@@ -108,8 +103,9 @@ In the latest release, you can now have a function execute once across a range o
 ```javascript
 var q2 = oMQ.addQuery({
 	context               : ['small', 'medium'],
-	call_for_each_context : false, 
-	callback              : function() { console.warn('small/medium'); }
+	call_for_each_context : false,
+	match                 : function() { console.log('MATCH: small/medium'); },
+	unmatch               : function() { console.log('MATCH: small/medium'); }
 });
 ```
 
