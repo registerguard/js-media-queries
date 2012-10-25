@@ -105,7 +105,7 @@ var q2 = oMQ.addQuery({
 	context               : ['small', 'medium'],
 	call_for_each_context : false,
 	match                 : function() { console.log('MATCH: small/medium'); },
-	unmatch               : function() { console.log('MATCH: small/medium'); }
+	unmatch               : function() { console.log('UNMATCH: small/medium'); }
 });
 ```
 
