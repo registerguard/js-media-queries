@@ -24,6 +24,7 @@
 * Added Pat to `CONTRIBUTORS.md`.
 * New version number: `v2.0.0`.
 * Fixed typo in `MIT-LICENSE`.
+* Removed `TODO.md` (moved to the project's issue center).
 * Updated demo files to reflect the new changes.
 * Updated `README.md` to bring back in docs (moved from WIKI).
 
