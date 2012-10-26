@@ -11,7 +11,7 @@
 #### October 24, 2012
 
 * Updated `CHANGELOG.md`.
-* Renamed `this.callbacks`, `this.last_context` and `this.context` to `this_callbacks`, `this._context` and `this._last_context` respectively.
+* Renamed `this.callbacks`, `this.last_context` and `this.context` to `this._callbacks`, `this._context` and `this._last_context` respectively.
 * Added some markdown backticks to comments for code/markup references.
 * Merged [@patocallaghan](https://github.com/patocallaghan/)'s fork:
 	* Modified the callback firing functionality to work with mediaquery context `unmatch`.
@@ -24,7 +24,6 @@
 * Added Pat to `CONTRIBUTORS.md`.
 * New version number: `v2.0.0`.
 * Fixed typo in `MIT-LICENSE`.
-* Removed `TODO.md` (moved to the project's issue center).
 * Updated demo files to reflect the new changes.
 * Updated `README.md` to bring back in docs (moved from WIKI).
 
