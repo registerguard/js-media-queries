@@ -8,7 +8,7 @@
  *            http://www.opensource.org/licenses/mit-license.php
  * @patterns  1) Closure 2) Alias 3) Namespace extension.
  * @version   2.0.0
- * @date      Wednesday, October 24, 2012
+ * @date      Wednesday, October 25, 2012
  */
 
 (function(omq) { // rgne.ws/V4HOQy

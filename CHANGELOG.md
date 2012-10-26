@@ -7,20 +7,13 @@
 
 ---
 
-## v1.1.1
-#### October 25, 2012
-
-* Updated `CHANGELOG.md`.
-* Fixed logic error in demo example in `README.md`.
-* Renamed `this.callbacks`, `this.last_context` and `this.context` to `this_callbacks`, `this._context` and `this._last_context` respectively.
-* Added some markdown backticks to comments for code/markup references.
-
----
-
-## v1.1.0
+## v2.0.0
 #### October 24, 2012
 
-* Merged @patocallaghan's fork:
+* Updated `CHANGELOG.md`.
+* Renamed `this.callbacks`, `this.last_context` and `this.context` to `this_callbacks`, `this._context` and `this._last_context` respectively.
+* Added some markdown backticks to comments for code/markup references.
+* Merged [@patocallaghan](https://github.com/patocallaghan/)'s fork:
 	* Modified the callback firing functionality to work with mediaquery context `unmatch`.
 		* Added ability to fire callbacks when a mediaquery unmatches.
 	* Backwards incompatable change: Changed `callback` to `match`. 
