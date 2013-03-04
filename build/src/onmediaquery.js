@@ -1,17 +1,6 @@
-/**
- * onMediaQuery
- *
- * @docs      https://github.com/JoshBarr/js-media-queries (original)
- *            https://github.com/registerguard/js-media-queries (this fork)
- * @copyright Copyright (c) 2012 Springload.
- * @license   Released under the MIT license.
- *            http://www.opensource.org/licenses/mit-license.php
- * @patterns  1) Closure 2) Alias 3) Namespace extension.
- * @version   2.0.0
- * @date      Wednesday, October 25, 2012
- */
-
-(function(omq) { // rgne.ws/V4HOQy
+;(function(omq) { // rgne.ws/V4HOQy
+	
+	'use strict';
 	
 	//--------------------------------------------------------------------------
 	//
