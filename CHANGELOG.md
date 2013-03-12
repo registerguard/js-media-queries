@@ -7,6 +7,7 @@
 * Added `clean` task to build.
 * Moved all vars to tops of functions for jshint and readability's sake.
 * Minor house cleaning.
+* Passing in window, document, undefined to closure. [More info here](https://github.com/shichuan/javascript-patterns/blob/master/jquery-plugin-patterns/lightweight.html).
 
 #### March 11, 2013
 
