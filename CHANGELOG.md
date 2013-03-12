@@ -20,6 +20,11 @@
 
 *Tested using [browserstack.com](http://www.browserstack.com).*
 
+* Mac OS X Mountain Lion:
+	* Firefox: `5.0`, `19.0`
+	* Safari: `6.0`
+	* Chrome: `14.0`, `26.0`
+	* Opera: `11.1`, `12.13`
 * PC Windows XP:
 	* Firefox: `3.6`, `18.0`
 	* Safari: `4.0`, `5.1`
@@ -37,7 +42,18 @@
 	* Safari: `5.1`
 	* Chrome `22.0`
 	* Opera `12.0`, `12.10`
-	* IE: `10.0`, `10.0` Desktop
+	* IE: `10.0`, `10.0` (Desktop)
+* iOS:
+	* iPhone: `3GS`, `4`, `4S`, `4S` (`6.0`), `5`, `3.2`
+	* iPad: `1st`, `2`, `2` (`5.0`), `3rd`, `3rd` (`6.0`)
+* Android:
+	* Samsung Galaxy: `S`, `SII`, `SIII`, `Note`, `Note II`, `Note 10.1`, `Nexus`, `Tab 2 10.1`
+	* Motorola: `Droid Razr`, `Droid 4`, `Photon 4G`, `Atrix HD`, `Razr`, `Razr Maxx HD`
+	* HTC: `Hero`, `Wildfire`, `Evo 3D`, `One X`
+	* Sony: `Xperia X10`, `Xperia Tipo`
+	* LG: `Optimus 3D`, `Nexus 4`
+	* Amazon Kindle: `Fire 2`, `Fire HD 8.9`
+	* Google: `Nexus 7`
 
 ---
 
