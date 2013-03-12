@@ -6,7 +6,7 @@
 
 ### NOTE:
 
-The original repsoitory, by @JoshBarr, [lives here](https://github.com/JoshBarr/js-media-queries).
+The original repsoitory, by [@joshbarr](https://github.com/joshbarr), [lives here](https://github.com/JoshBarr/js-media-queries).
 
 ---
 
