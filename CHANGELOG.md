@@ -1,9 +1,113 @@
 # Changelog
 
-## vX.X.X
-#### Mmmmm [D]D, YYYY
+## v2.1.0
 
-* ...
+#### March 11, 2013
+
+* Updated this file.
+* Added [Grunt](http://gruntjs.com/) for build process. Changes made because of jshint errors:
+	* Moved source files into `/build` folder.
+	* Due to jshint errors on strict violations using `this`, I converted private functions to `var` functions. See [here](http://stackoverflow.com/questions/6300937/strict-violation-using-this-keyword-and-revealing-module-pattern).
+	* Converted `elem.currentStyle['fontFamily']` to dot notation: `elem.currentStyle.fontFamily`.
+	* Moved for loop `var`s to top of function for the sake of having one var per block.
+	* Added banners to min/non-min versions.
+* `demo.html`:
+	* Update `<html class="no-js">` to use IE classes. Not currently used in the css, but I want to have it as an option for future updates.
+	* Removed `<meta name="apple-mobile-web-app-capable" content="yes">`.
+	* Moved `<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">` to the top.
+	* Updated `fouc` JS a bit from [this](https://gist.github.com/mhulse/4704893).
+
+##### Browser tests:
+
+* Mac OS X Mountain Lion:
+	* Firefox: `19.0.2`
+	* Safari: `6.0.2`
+	* Chrome: `25.0`
+	* Opera: `12.14`
+
+*Tested using iOS Simulator:*
+
+* iPhone (Retina 4-inch):
+	* Safari (simulated)
+* iPhone (Retina 3.5-inch), iOS `6.0`:
+	* Safari (simulated), Safari, Chrome `25.0`, Opera Mini `7.0`, Dolphin `7.2.1`
+* iPhone, iOS `6.0`:
+	* Safari (simulated)
+* iPad (Retina), iOS `6.0`:
+	* Safari
+* iPad, iOS `6.0`:
+	* Safari (simulated)
+
+*Tested using [browserstack.com](http://www.browserstack.com).*
+
+* PC Windows XP:
+	* Firefox: `3.6`, `18.0`
+	* Safari: `4.0`, `5.1`
+	* Chrome: `14.0`, `25.0`
+	* Opera: `10.0`, `12.11`
+	* IE: `6.0`, `7.0`, `8.0`
+* PC Windows `7`:
+	* Firefox: `3.6`, `18.0`
+	* Safari: `4.0`, `5.1`
+	* Chrome: `14.0`, `25.0`
+	* Opera: `10.0`, `12.11`
+	* IE: `8.0`, `9.0`
+* PC Windows `8`:
+	* Firefox: `16.0`, `18.0`
+	* Safari: `5.1`
+	* Chrome `22.0`
+	* Opera `12.0`, `12.10`
+	* IE: `10.0`, `10.0` (Desktop)
+
+---
+
+## v2.0.1
+
+#### March 11, 2013
+
+* Fixes issue [#10](https://github.com/registerguard/js-media-queries/issues/10).
+* Fixes issue [#12](https://github.com/registerguard/js-media-queries/issues/12).
+* Fixes issue [#13](https://github.com/registerguard/js-media-queries/issues/13).
+* Fixes issue [#16](https://github.com/registerguard/js-media-queries/issues/16).
+
+##### Browser tests:
+
+*Tested using [browserstack.com](http://www.browserstack.com).*
+
+* Mac OS X Mountain Lion:
+	* Firefox: `5.0`, `19.0`
+	* Safari: `6.0`
+	* Chrome: `14.0`, `26.0`
+	* Opera: `11.1`, `12.13`
+* PC Windows XP:
+	* Firefox: `3.6`, `18.0`
+	* Safari: `4.0`, `5.1`
+	* Chrome: `14.0`, `25.0`
+	* Opera: `10.0`, `12.11`
+	* IE: `6.0`, `7.0`, `8.0`
+* PC Windows `7`:
+	* Firefox: `3.6`, `18.0`
+	* Safari: `4.0`, `5.1`
+	* Chrome: `14.0`, `25.0`
+	* Opera: `10.0`, `12.11`
+	* IE: `8.0`, `9.0`
+* PC Windows `8`:
+	* Firefox: `16.0`, `18.0`
+	* Safari: `5.1`
+	* Chrome `22.0`
+	* Opera `12.0`, `12.10`
+	* IE: `10.0`, `10.0` (Desktop)
+* iOS:
+	* iPhone: `3GS`, `4`, `4S`, `4S` (`6.0`), `5`, `3.2`
+	* iPad: `1st`, `2`, `2` (`5.0`), `3rd`, `3rd` (`6.0`)
+* Android:
+	* Samsung Galaxy: `S`, `SII`, `SIII`, `Note`, `Note II`, `Note 10.1`, `Nexus`, `Tab 2 10.1`
+	* Motorola: `Droid Razr`, `Droid 4`, `Photon 4G`, `Atrix HD`, `Razr`, `Razr Maxx HD`
+	* HTC: `Hero`, `Wildfire`, `Evo 3D`, `One X`
+	* Sony: `Xperia X10`, `Xperia Tipo`
+	* LG: `Optimus 3D`, `Nexus 4`
+	* Amazon Kindle: `Fire 2`, `Fire HD 8.9`
+	* Google: `Nexus 7`
 
 ---
 
@@ -58,6 +162,7 @@
 ---
 
 ## v2.0.0
+
 #### October 24, 2012
 
 * Updated `CHANGELOG.md`.
@@ -86,7 +191,7 @@
 	* Firefox `16.0.1`, Chrome `22.0.1229.94 m`, Safari `5.1.7 (7534.57.2)`, Opera `12.02 (1578)`
 	* IE `9.0.8112.16421`, IE `8.0.6001.18702`, IE `7.0.6002.18005`
 * PC XP:
-    * IE `6.0.2900.5512.xpsp_sp3_gdr.120504-1619`
+	* IE `6.0.2900.5512.xpsp_sp3_gdr.120504-1619`
 * iPhone (Retina 4-inch):
 	* Safari (simulated)
 * iPhone (Retina 3.5-inch), iOS `6.0`:
@@ -103,6 +208,7 @@
 ---
 
 ## v1.0.0
+
 #### October 6, 2012
 
 * New version number: `v1.0.0`!
@@ -149,6 +255,7 @@
 ---
 
 ## v0.1.1
+
 #### July 26, 2012
 
 * Bumped version number.
@@ -178,6 +285,7 @@
 ---
 
 ## v0.1.0
+
 #### July 22, 2012
 
 * Added version number 0.1.0.
@@ -225,3 +333,11 @@
 ---
 
 Version number and changes prior to this fork are (currently) not documented.
+
+---
+
+## vX.X.X
+
+#### Mmmmm [D]D, YYYY
+
+* ...

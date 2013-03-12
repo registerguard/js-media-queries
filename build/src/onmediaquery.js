@@ -1,16 +1,3 @@
-/**
- * onMediaQuery
- * A neat way to trigger JS when media queries change. No jQuery required.
- *
- * @author Josh Barr
- * @link http://www.springload.co.nz/
- * @docs https://github.com/registerguard/js-media-queries
- * @copyright Copyright (c) 2013 Josh Barr.
- * @license Released under the Released under the MIT license..
- * @version 2.1.0
- * @date 2013/03/11
- */
-
 (function(omq) { // rgne.ws/V4HOQy
 	
 	'use strict';
