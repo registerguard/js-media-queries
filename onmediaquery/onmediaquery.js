@@ -11,7 +11,7 @@
  * @date 2013/03/12
  */
 
-(function(omq) { // rgne.ws/V4HOQy
+(function(omq, window, document, undefined) { // rgne.ws/V4HOQy
 	
 	'use strict';
 	
@@ -361,4 +361,4 @@
 	
 	return omq; // Expose the API.
 	
-}(window.oMQ = window.oMQ || {})); // Use existing namespace or make a new object of that namespace.
+}((window.oMQ = window.oMQ || {}), window, document, undefined)); // 1) Use existing namespace or make a new object of that namespace; 2) `window`; 3) `document` (rgne.ws/16pSbHc).
