@@ -7,6 +7,40 @@
 
 ---
 
+## v2.0.1
+
+#### March 11, 2013
+
+* Fixes issue [#10](https://github.com/registerguard/js-media-queries/issues/10).
+* Fixes issue [#12](https://github.com/registerguard/js-media-queries/issues/12).
+* Fixes issue [#13](https://github.com/registerguard/js-media-queries/issues/13).
+* Fixes issue [#16](https://github.com/registerguard/js-media-queries/issues/16).
+
+##### Browser tests:
+
+*Tested using [browserstack.com](http://www.browserstack.com).*
+
+* PC Windows XP:
+	* Firefox: `3.6`, `18.0`
+	* Safari: `4.0`, `5.1`
+	* Chrome: `14.0`, `25.0`
+	* Opera: `10.0`, `12.11`
+	* IE: `6.0`, `7.0`, `8.0`
+* PC Windows `7`:
+	* Firefox: `3.6`, `18.0`
+	* Safari: `4.0`, `5.1`
+	* Chrome: `14.0`, `25.0`
+	* Opera: `10.0`, `12.11`
+	* IE: `8.0`, `9.0`
+* PC Windows `8`:
+	* Firefox: `16.0`, `18.0`
+	* Safari: `5.1`
+	* Chrome `22.0`
+	* Opera `12.0`, `12.10`
+	* IE: `10.0`, `10.0` Desktop
+
+---
+
 ## v2.0.0
 #### October 24, 2012
 

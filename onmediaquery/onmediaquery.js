@@ -7,8 +7,8 @@
  * @license   Released under the MIT license.
  *            http://www.opensource.org/licenses/mit-license.php
  * @patterns  1) Closure 2) Alias 3) Namespace extension.
- * @version   2.0.0
- * @date      Wednesday, October 25, 2012
+ * @version   2.0.1
+ * @date      Monday, March 11, 2013
  */
 
 (function(omq) { // rgne.ws/V4HOQy
@@ -322,7 +322,7 @@
 		if (elem) {
 			
 			// return (IE browser?) ? (Return IE fontFamily) : ((W3C browser?) ? (Return W3C font-family) : Return empty string);
-			return (elem.currentStyle) ? elem.currentStyle['fontFamily'] : ((window.getComputedStyle) ? window.getComputedStyle(elem).getPropertyValue('font-family') : '');
+			return (elem.currentStyle) ? elem.currentStyle['fontFamily'] : ((window.getComputedStyle) ? window.getComputedStyle(elem, null).getPropertyValue('font-family') : '');
 			
 		}
 		
