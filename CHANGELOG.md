@@ -1,13 +1,45 @@
 # Changelog
 
 ## vX.X.X
+
 #### Mmmmm [D]D, YYYY
 
 * ...
 
 ---
 
+## v2.1.0
+
+#### March 11, 2013
+
+* Updated this file.
+* Added [Grunt](http://gruntjs.com/) for build process. Changes made because of jshint errors:
+	* Moved source files into `/build` folder.
+	* Due to jshint errors on strict violations using `this`, I converted private functions to `var` functions. See [here](http://stackoverflow.com/questions/6300937/strict-violation-using-this-keyword-and-revealing-module-pattern).
+	* Converted `elem.currentStyle['fontFamily']` to dot notation: `elem.currentStyle.fontFamily`.
+	* Moved for loop `var`s to top of function for the sake of having one var per block.
+	* Added banners to min/non-min versions.
+* `demo.html`:
+	* Update `<html class="no-js">` to use IE classes. Not currently used in the css, but I want to have it as an option for future updates.
+	* Removed `<meta name="apple-mobile-web-app-capable" content="yes">`.
+	* Moved `<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">` to the top.
+	* Updated `fouc` JS a bit from [this](https://gist.github.com/mhulse/4704893).
+
+---
+
+## v2.0.1
+
+#### March 11, 2013
+
+* Fixes issue [#10](https://github.com/registerguard/js-media-queries/issues/10).
+* Fixes issue [#12](https://github.com/registerguard/js-media-queries/issues/12).
+* Fixes issue [#13](https://github.com/registerguard/js-media-queries/issues/13).
+* Fixes issue [#16](https://github.com/registerguard/js-media-queries/issues/16). 
+
+---
+
 ## v2.0.0
+
 #### October 24, 2012
 
 * Updated `CHANGELOG.md`.
@@ -53,6 +85,7 @@
 ---
 
 ## v1.0.0
+
 #### October 6, 2012
 
 * New version number: `v1.0.0`!
@@ -99,6 +132,7 @@
 ---
 
 ## v0.1.1
+
 #### July 26, 2012
 
 * Bumped version number.
@@ -128,6 +162,7 @@
 ---
 
 ## v0.1.0
+
 #### July 22, 2012
 
 * Added version number 0.1.0.

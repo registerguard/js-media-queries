@@ -2,7 +2,7 @@
   "title": "onMediaQuery",
   "name": "onmediaquery",
   "description": "A neat way to trigger JS when media queries change. No jQuery required.",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "homepage": "https://github.com/registerguard/js-media-queries",
   "main": "onmediaquery.js",
   "repository": {
