@@ -8,6 +8,8 @@
 * Moved all vars to tops of functions for jshint and readability's sake.
 * Minor house cleaning.
 * Passing in window, document, undefined to closure. [More info here](https://github.com/shichuan/javascript-patterns/blob/master/jquery-plugin-patterns/lightweight.html).
+* Added @Eworm to contributors list (for [#16](https://github.com/JoshBarr/js-media-queries/pull/16)).
+* Updated `README.md` to make note of the original onmediaquery repsoitory.
 
 #### March 11, 2013
 

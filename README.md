@@ -4,6 +4,12 @@
 
 ---
 
+### NOTE:
+
+The original repsoitory, by @JoshBarr, [lives here](https://github.com/JoshBarr/js-media-queries).
+
+---
+
 [Jeremy Keith](http://adactio.com/) recently [posted a fantastic way of getting
 CSS and Javascript to talk media queries with the CSS `:after` pseudo-property](http://adactio.com/journal/5429/).
 
