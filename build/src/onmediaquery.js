@@ -17,6 +17,9 @@
 	
 	omq.init = function(query_array) {
 		
+		// Declare one `var` statement per function:
+		var i, l;
+		
 		// rgne.ws/UJ8hYh
 		this._callbacks    = []; // Container for all callbacks registered with the plugin.
 		this._context      = ''; // Current active query to be read inside callbacks, as `this._last_context` won't be set when they're called!
@@ -24,7 +27,7 @@
 		
 		if (typeof query_array !== 'undefined') {
 			
-			for (var i = 0, l = query_array.length; i < l; i++) {
+			for (i = 0, l = query_array.length; i < l; i++) {
 				
 				this.addQuery(query_array[i]);
 				
@@ -91,9 +94,11 @@
 	
 	omq.removeQuery = function(query_object) {
 		
+		var match;
+		
 		if (query_object) { // rgne.ws/VpFmUI
 			
-			var match = -1;
+			match = -1;
 			
 			while ((match = this._callbacks.indexOf(query_object)) > -1) {
 				
@@ -187,10 +192,8 @@
 	_triggerCallbacks = function(size, key) {
 		
 		if (size && key) {
-				
-			var callback_function,
-			    i,
-			    l;
+			
+			var callback_function, i, l;
 			
 			for (i = 0, l = this._callbacks.length; i < l; i++) {
 				
@@ -285,7 +288,9 @@
 	
 	_inArray = function(needle, haystack) {
 		
-		for (var i = 0, l = haystack.length; i < l; i++) {
+		var i, l;
+		
+		for (i = 0, l = haystack.length; i < l; i++) {
 			
 			if (haystack[i] == needle) {
 				

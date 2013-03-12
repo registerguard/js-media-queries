@@ -37,8 +37,10 @@ module.exports = function(grunt) {
 		/*----------------------------------( 01 )----------------------------------*/
 		
 		/**
+		 * Validate files with JSHint.
+		 *
 		 * @see http://www.jshint.com/docs/
-		 * @see https://github.com/jshint/jshint/blob/r12/jshint.js#L256
+		 * @see https://github.com/gruntjs/grunt-contrib-jshint
 		 */
 		
 		jshint: {
@@ -61,6 +63,32 @@ module.exports = function(grunt) {
 		/*----------------------------------( 02 )----------------------------------*/
 		
 		/**
+		 * Clean files and folders.
+		 *
+		 * @see https://github.com/gruntjs/grunt-contrib-clean
+		 */
+		
+		clean : {
+			
+			options : {
+				
+				force : true // Sketchy!
+				
+			},
+			
+			dist : [
+				
+				'../<%= pkg.name %>/**/*'
+				
+			]
+			
+		},
+		
+		/*----------------------------------( 03 )----------------------------------*/
+		
+		/**
+		 * Minify files with UglifyJS.
+		 *
 		 * @see https://github.com/gruntjs/grunt-contrib-uglify
 		 */
 		
@@ -84,9 +112,11 @@ module.exports = function(grunt) {
 			
 		},
 		
-		/*----------------------------------( 03 )----------------------------------*/
+		/*----------------------------------( 04 )----------------------------------*/
 		
 		/**
+		 * Concatenate files.
+		 *
 		 * @see https://github.com/gruntjs/grunt-contrib-concat
 		 */
 		
@@ -113,12 +143,14 @@ module.exports = function(grunt) {
 	
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	
+	grunt.loadNpmTasks('grunt-contrib-clean');
+	
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	
 	//----------------------------------
 	
-	grunt.registerTask('default', ['jshint', 'uglify', 'concat']);
+	grunt.registerTask('default', ['jshint', 'clean', 'uglify', 'concat']);
 	
 };

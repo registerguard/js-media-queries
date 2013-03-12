@@ -2,6 +2,12 @@
 
 ## v2.1.0
 
+#### March 12, 2013
+
+* Added `clean` task to build.
+* Moved all vars to tops of functions for jshint and readability's sake.
+* Minor house cleaning.
+
 #### March 11, 2013
 
 * Updated this file.
