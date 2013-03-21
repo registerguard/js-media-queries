@@ -8,10 +8,10 @@
  * @copyright Copyright (c) 2013 Josh Barr.
  * @license Released under the Released under the MIT license..
  * @version 2.1.0
- * @date 2013/03/12
+ * @date 2013/03/20
  */
 
-(function(omq, window, document, undefined) { // rgne.ws/V4HOQy
+(function(omq, window, document, undefined) { // rgne.ws/16pSbHc
 	
 	'use strict';
 	
@@ -361,4 +361,4 @@
 	
 	return omq; // Expose the API.
 	
-}((window.oMQ = window.oMQ || {}), window, document, undefined)); // 1) Use existing namespace or make a new object of that namespace; 2) `window`; 3) `document` (rgne.ws/16pSbHc).
+}((window.oMQ = window.oMQ || {}), window, document, undefined)); // rgne.ws/V4HOQy
